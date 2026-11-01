@@ -509,3 +509,6 @@ textarea:focus { outline: 2px solid var(--gold); }
 .big-phase { font-size: 16px; }
 .big-time { font-family: 'Tiny5', 'Press Start 2P', monospace; font-size: 64px; line-height: 1; letter-spacing: 2px; text-shadow: 3px 3px 0 #34210f; }
 .big-hud .row { justify-content: center; }
+.hero-name-ask { display: block; margin-bottom: 4px; pointer-events: auto; }
+.name-ask { display: flex; gap: 8px; margin: 12px 0 4px; }
+.name-ask input { flex: 1; min-width: 0; }
