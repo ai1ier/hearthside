@@ -150,6 +150,12 @@ main { max-width: 1240px; margin: 0 auto; padding: 18px 16px 30px; }
 .board { position: sticky; top: 12px; }
 .board-head .sub { font-size: 16px; }
 .board-head .sub.small { font-size: 14px; color: var(--ink-soft); }
+.log-past-btn { float: right; margin: 0 0 6px 8px; }
+.log-past { display: grid; gap: 10px; }
+.log-past label { display: grid; gap: 2px; font-size: 15px; }
+.lp-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
+.lp-row input[type='text'] { flex: 1 1 160px; }
+.lp-err { color: var(--warn); font-size: 14px; }
 .cards { display: grid; gap: 12px; margin: 12px 0; }
 .qcard { background: #fffaf0; padding: 12px 14px; position: relative; box-shadow: 0 0 0 3px var(--parch-3), inset 4px 0 0 var(--c, var(--parch-3)); }
 .qcard.best { box-shadow: 0 0 0 3px var(--gold), inset 4px 0 0 var(--c, var(--gold)); }
@@ -514,3 +520,52 @@ textarea:focus { outline: 2px solid var(--gold); }
 .name-ask input { flex: 1; min-width: 0; }
 .cloud-banner { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; padding: 8px 12px; background: #fff6dc; border: 2px solid #c8a060; color: #4a2f1d; font-size: 13px; }
 .cloud-state { margin: 6px 0 10px; }
+
+/* ---- cottage tabs: wooden plank bar, signboard tabs with pixel icons ---- */
+:root {
+  --plank-dark: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 24%27 shape-rendering=%27crispEdges%27%3E%3Crect width=%2748%27 height=%2724%27 fill=%27%234a2f1d%27/%3E%3Crect x=%270%27 y=%277%27 width=%2748%27 height=%271%27 fill=%27%232a1a0e%27/%3E%3Crect x=%270%27 y=%270%27 width=%2748%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%2723%27 y=%270%27 width=%271%27 height=%277%27 fill=%27%232a1a0e%27/%3E%3Crect x=%2734%27 y=%275%27 width=%274%27 height=%271%27 fill=%27%233e2616%27/%3E%3Crect x=%2730%27 y=%275%27 width=%278%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%2738%27 y=%271%27 width=%273%27 height=%271%27 fill=%27%233e2616%27/%3E%3Crect x=%2735%27 y=%273%27 width=%274%27 height=%271%27 fill=%27%233e2616%27/%3E%3Crect x=%2730%27 y=%276%27 width=%277%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%2742%27 y=%272%27 width=%273%27 height=%271%27 fill=%27%233e2616%27/%3E%3Crect x=%2743%27 y=%273%27 width=%271%27 height=%271%27 fill=%27%232a1a0e%27/%3E%3Crect x=%270%27 y=%2715%27 width=%2748%27 height=%271%27 fill=%27%232a1a0e%27/%3E%3Crect x=%270%27 y=%278%27 width=%2748%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%2722%27 y=%278%27 width=%271%27 height=%277%27 fill=%27%232a1a0e%27/%3E%3Crect x=%279%27 y=%2714%27 width=%279%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%2747%27 y=%2712%27 width=%271%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%2710%27 y=%279%27 width=%279%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%2719%27 y=%279%27 width=%279%27 height=%271%27 fill=%27%233e2616%27/%3E%3Crect x=%2730%27 y=%2711%27 width=%277%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%270%27 y=%2723%27 width=%2748%27 height=%271%27 fill=%27%232a1a0e%27/%3E%3Crect x=%270%27 y=%2716%27 width=%2748%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%2732%27 y=%2716%27 width=%271%27 height=%277%27 fill=%27%232a1a0e%27/%3E%3Crect x=%2727%27 y=%2722%27 width=%276%27 height=%271%27 fill=%27%23583822%27/%3E%3Crect x=%2728%27 y=%2721%27 width=%274%27 height=%271%27 fill=%27%233e2616%27/%3E%3Crect x=%272%27 y=%2717%27 width=%274%27 height=%271%27 fill=%27%233e2616%27/%3E%3Crect x=%2716%27 y=%2718%27 width=%278%27 height=%271%27 fill=%27%233e2616%27/%3E%3Crect x=%2719%27 y=%2722%27 width=%276%27 height=%271%27 fill=%27%23583822%27/%3E%3C/svg%3E");
+  --plank: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 24%27 shape-rendering=%27crispEdges%27%3E%3Crect width=%2748%27 height=%2724%27 fill=%27%238a5a34%27/%3E%3Crect x=%270%27 y=%277%27 width=%2748%27 height=%271%27 fill=%27%235a3a22%27/%3E%3Crect x=%270%27 y=%270%27 width=%2748%27 height=%271%27 fill=%27%239c6a40%27/%3E%3Crect x=%2737%27 y=%270%27 width=%271%27 height=%277%27 fill=%27%235a3a22%27/%3E%3Crect x=%2723%27 y=%275%27 width=%275%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%2743%27 y=%272%27 width=%273%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%2729%27 y=%275%27 width=%277%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%2735%27 y=%273%27 width=%277%27 height=%271%27 fill=%27%239c6a40%27/%3E%3Crect x=%2746%27 y=%271%27 width=%272%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%270%27 y=%2715%27 width=%2748%27 height=%271%27 fill=%27%235a3a22%27/%3E%3Crect x=%270%27 y=%278%27 width=%2748%27 height=%271%27 fill=%27%239c6a40%27/%3E%3Crect x=%2736%27 y=%278%27 width=%271%27 height=%277%27 fill=%27%235a3a22%27/%3E%3Crect x=%2727%27 y=%2714%27 width=%274%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%273%27 y=%2710%27 width=%273%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%2737%27 y=%2713%27 width=%273%27 height=%271%27 fill=%27%239c6a40%27/%3E%3Crect x=%2747%27 y=%2712%27 width=%271%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%2743%27 y=%2710%27 width=%274%27 height=%271%27 fill=%27%239c6a40%27/%3E%3Crect x=%270%27 y=%2723%27 width=%2748%27 height=%271%27 fill=%27%235a3a22%27/%3E%3Crect x=%270%27 y=%2716%27 width=%2748%27 height=%271%27 fill=%27%239c6a40%27/%3E%3Crect x=%2713%27 y=%2716%27 width=%271%27 height=%277%27 fill=%27%235a3a22%27/%3E%3Crect x=%2713%27 y=%2719%27 width=%276%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%272%27 y=%2719%27 width=%274%27 height=%271%27 fill=%27%239c6a40%27/%3E%3Crect x=%2726%27 y=%2717%27 width=%273%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%278%27 y=%2720%27 width=%273%27 height=%271%27 fill=%27%2374492a%27/%3E%3Crect x=%2747%27 y=%2720%27 width=%271%27 height=%271%27 fill=%27%2374492a%27/%3E%3C/svg%3E");
+}
+.tabs {
+  background: var(--plank-dark) 0 0 / 96px 48px repeat; image-rendering: pixelated;
+  gap: 8px; padding: 12px 12px 0; box-shadow: inset 0 3px 0 #2a1a0e, inset 0 -3px 0 #2a1a0e;
+}
+.tab {
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--title); font-size: 13px;
+  color: #fff3d6; text-shadow: 1px 1px 0 #2a1a0e; padding: 7px 14px 9px;
+  background: var(--nail) left 4px top 4px / 4px 4px no-repeat, var(--nail) right 4px top 4px / 4px 4px no-repeat, var(--plank) 0 0 / 96px 48px repeat;
+  border: none; box-shadow: inset 0 0 0 2px #3e2616, inset 2px 2px 0 2px rgba(255, 220, 160, .18);
+}
+.tab:hover { filter: brightness(1.1); }
+.tab.on {
+  background: var(--parch); color: var(--ink); text-shadow: none;
+  box-shadow: inset 0 0 0 2px #3e2616, inset 0 3px 0 2px var(--gold), inset -3px 0 0 2px var(--parch-2);
+}
+.tab .pix, .subtabs .pix { image-rendering: pixelated; flex: none; filter: drop-shadow(1px 1px 0 rgba(42, 26, 14, .5)); }
+.subtabs .btn { display: inline-flex; align-items: center; gap: 6px; }
+@media (max-width: 640px) { .tab { font-size: 10px; padding: 6px 8px 8px; gap: 5px; } .tab .pix { width: 18px; height: 18px; } }
+
+/* ---- all-day events: the title held between two curling vines ---- */
+.tl-row.allday .tl-time { font-size: 11px; }
+.vine-note { display: flex; align-items: center; gap: 4px; color: #3e5a2a; }
+.vine-note .pix, .wvine .pix { image-rendering: pixelated; flex: none; }
+.vine-note span { display: flex; flex-direction: column; font-weight: 600; line-height: 1.2; padding: 0 2px; }
+.vine-note small { font-weight: 400; opacity: .75; }
+.wvine { display: flex; align-items: center; gap: 1px; margin-top: 4px; font-size: 10px; line-height: 12px; color: #3e5a2a; }
+.wvine span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* tabs: the rounder pixel font is narrower than the title font, so all five fit on one line */
+.tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.tab { font-family: var(--font); font-size: 18px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; flex: none; padding: 6px 12px 8px; }
+.tab.gear { margin-left: 8px; }
+@media (max-width: 640px) {
+  .tabs { justify-content: flex-start; gap: 4px; padding: 8px 6px 0; }
+  .tab { font-size: 14px; padding: 5px 7px 7px; gap: 4px; }
+  .tab .pix { width: 16px; height: 16px; }
+  .tab.gear { margin-left: 0; }
+}
+@media (max-width: 480px) {
+  .tabs { gap: 2px; padding: 8px 3px 0; justify-content: center; }
+  .tab { font-size: 12px; padding: 4px 5px 6px; gap: 3px; letter-spacing: 0; }
+  .tab .pix { width: 13px; height: 13px; }
+}
