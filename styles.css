@@ -512,3 +512,5 @@ textarea:focus { outline: 2px solid var(--gold); }
 .hero-name-ask { display: block; margin-bottom: 4px; pointer-events: auto; }
 .name-ask { display: flex; gap: 8px; margin: 12px 0 4px; }
 .name-ask input { flex: 1; min-width: 0; }
+.cloud-banner { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; padding: 8px 12px; background: #fff6dc; border: 2px solid #c8a060; color: #4a2f1d; font-size: 13px; }
+.cloud-state { margin: 6px 0 10px; }
